@@ -1,0 +1,2 @@
+def analizar():
+    print("sirve")
