@@ -16,4 +16,4 @@ def analizar(datos):
         if token.lower() not in abecedario:
             nuevo_texto = nuevo_texto.replace(token, "")
             arreglo_errores.append(token)
-    AS.analizar(nuevo_texto)
+    return AS.analizar(nuevo_texto)
