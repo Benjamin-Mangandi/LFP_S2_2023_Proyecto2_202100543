@@ -8,13 +8,19 @@ tk_abecedario = ["a", "b", "c", "d"]
 tk_variables = ["claves", "registros", "="]
 tk_funciones = ["imprimir"]
 resultados = []
+claves = []
+registros = []
 continuacion =""
 indice = 0
 columna = 0
 fila = 0
+dentro_arreglo = False
 comentario_junto = False
 tokens_leidos = []
 def analizar(datos):
+    global registros
+    global dentro_arreglo
+    global claves
     global fila
     global columna
     global indice
@@ -26,6 +32,29 @@ def analizar(datos):
     comentario_multilinea = False
     for linea in lineas:
         columna = columna+1
+        if dentro_arreglo:
+            if linea.startswith("]"):
+                dentro_arreglo= False
+                continue
+            if linea.replace(" ", "").startswith("{"):
+                if linea.endswith("}"):
+                    aux = linea.replace(" ", "")
+                    aux2 = aux[1:-1]
+                    aux3 = aux2.split(",")
+                    registros.append(aux3)
+                    print(registros)
+                    continue
+        if linea.startswith("claves ="):
+            if linea.endswith("]"):
+                aux = linea[10:-1]
+                aux_2 = aux.split(",")
+                for dato in aux_2:
+                    claves.append(dato.replace('"', ""))
+            continue
+        if linea.startswith("Registros ="):
+            if linea.endswith("["):
+                dentro_arreglo= True
+                continue
         if linea.startswith('imprimir("'):
             if comentario_junto == False:
                 aux_tk = tokens.token("instrucción",linea[:8],fila,columna)
@@ -46,7 +75,20 @@ def analizar(datos):
         if linea.startswith('imprimirln("'):
             comentario_junto=False
             resultados.append(linea[12:-3])
-            print(resultados)
+            continue
+        if linea.startswith("datos"):
+            texto_claves = ""
+            texto_registros = ""
+            for clave in claves:
+                texto_claves=clave+texto_claves
+            resultados.append(str(texto_claves))
+            for sub_registro in registros:
+                for registro in sub_registro:
+                    texto_registros=registro+texto_registros
+                resultados.append(texto_registros)
+            continue
+        if linea.startswith("conteo"):
+            resultados.append(str(len(registros)))
             continue
         for token in linea:
             if comentario_multilinea:
