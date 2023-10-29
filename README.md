@@ -1,25 +1,22 @@
 # **Lenguajes Formales y de Programación**
-## *Primer Proyecto*
+## *Segundo Proyecto*
 ### **Segundo Semestre 2023**
 
 ```js
 Universidad San Carlos De Guatemala
 Programador: Harold Benjamin Oxlaj Mangandi
 Carne: 202100543
-Lenguaje: Python
+Lenguaje: Python, HTML
 Bibliotecas usadas: graphviz, tkinter, subprocess, math
 ```
 ---
 ### Descripción del Proyecto
-El siguiente proyecto es un analizador lexico, el cual tiene como objetivo reconocer errores lexico ingresados por el usuario haciendo uso del formato .json, mostrarle al usuario los posibles errores al momento de leer un archivo y graficar las operaciones ingresadas por medio de nodos utilizando para eso la libreria graphiz.
+El siguiente proyecto es un analizador lexico y sintactico, el cual tiene como objetivo reconocer las instrucciones ingresadas por el usuario y desplegarlas en la consola de la aplicación, asi mismo el usuario puede generar reportes de tokens, errores y datos en formato HTML.
 ## Partes del Proyecto
 ### **Archivos y Carpetas**
 ### Carpeta Principal
 # main.py
 **Importa**: *analizador_lexico, graficador*
-Es en donde se encuentra el iniciador de la ventana principal: *menu*, contiene todos los elementos de tkinter de la ventana principal, la cual cuenta con un cuadro de texto por medio de *tkinter.text* el cual sirve para que el usuario ingrese las operaciones deseadas o bien cargue un archivo mediante el boton *abrir* el cual está como comando en un *tkinter.Menu*; se puede sobreescribir el archivo, guardarlo como otro diferente o salir de la aplicacion
-![main](https://i.ibb.co/Yy8rpyd/menu1.png)
-![main2](https://i.ibb.co/DYd09Rg/menu2.png)
 ## **Funciones**
 ### *seleccionar_archivo*
 **Parametros**: nombre del cuadro de texto
@@ -43,13 +40,9 @@ Esta funcion recibe como parametro un diccionario el cual contendra los errores 
 ### *reporte_documento*
 Esta funcion determina si hay operaciones ingresadas por el usuario por medio de una condicion con la varible del archivo **analizador_lexico** *datos_validados* si los hay grafica normalmente, si no, manda una advertencia al usuario.
 ![reporte](https://i.ibb.co/RQwqTQ8/reporte-documento.png)
-### *manual_usuario y manual_tecnico*
-Estas funciones simplemente abren en el bloc de notas los archivos del manual de usuario y tecnico respectivamente
-![usuario_tecnico](https://i.ibb.co/M71RbzX/usuario-tecnico.png)
-### Operaciones
-# analizador.py
+### analizadores
+# analizador_lexico.py
 Este archivo contiene todos los abecedarios que usa el analizador para validar caracteres y palabras.
-![analizador1](https://i.ibb.co/VQgJ2Qj/analizador1.png)
 ## **Funciones**
 ### *analizar*
 **Parametros**: texto del cuadro de texto
@@ -73,7 +66,7 @@ Esta función realiza las subo-peracion que requiera el usuario al validar que l
 Esta funcion sigue el mismo principio que la anterior, realiza las sub-operaciones que requiera la funcion anterior con los datos recolectados de la funcion anterior, y dependiendo si un valor es un arreglo o no, manda a llamar a la funcion *operar()* para validar los datos.
 ![sub2_operaciones](https://i.ibb.co/87RKhDT/sub-sub-operar.png)
 ![sub2_operaciones2](https://i.ibb.co/tLyPTgd/sub-sub-operar2.png)
-# graficador.py
+# analizador_sintactico.py
 ## **Funciones**
 ### *reiniciar*
 Esta funcion simplemente reinicia los nodos ya creados en analisis anteriores por medio de *clear()*
@@ -87,8 +80,8 @@ esta funcion crea y le da el estilo a los nodos, tiene una condicion con la clav
 ![crear_nodo](https://i.ibb.co/fXVDPYF/crear-nodo.png)
 
 ### objetos
-# aritmetica.py
-# **Clase**: operacion
+# errores.py
+# **Clase**: Error
 Esta clase tiene como atributos *tipo*, que es tipo de operación aritmetica, *valor1*, que es el primer valor ingresado, *valor2* que es el segundo valor ingresado, *resultado* que es el resultado de la operacion aritmetica dado los dos valores.
 ![operacion](https://i.ibb.co/Lxy3mJs/operacion.png)
 ## **Funciones**
@@ -100,7 +93,7 @@ Redondea todas las operaciones a 4 decimales.
 ![operar2](https://i.ibb.co/27XQjDx/operar2.png)
 ![operar3](https://i.ibb.co/ryngrCr/operar3.png)
 ![operar4](https://i.ibb.co/gd0dNQk/operar4.png)
-# estilo.py
-# **Clase**: estilo_grafico
+# tokens.py
+# **Clase**: token
 Esta clase tiene como atributos *texto*, que es el nombre que se le dará al documento, *fondo*, que es color de los nodos, *fuente*, que es color de la letra y *forma* que es la forma que tendra los nodos.
 ![estilo_grafico](https://i.ibb.co/3RBPfrC/estilo-grafico.png)

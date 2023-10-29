@@ -103,7 +103,7 @@ def analizar_texto(texto):
     resultados = AL.analizar(texto)
     cuadro_resultados.delete(1.0, END)
     for resultado in reversed(resultados):
-        cuadro_resultados.insert(1.0, str("\n"+">>>>"+resultado))
+        cuadro_resultados.insert(1.0, str("\n"+">>>> "+resultado))
     cuadro_resultados.config(state="disabled")
 
 
