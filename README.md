@@ -12,6 +12,7 @@ Bibliotecas usadas: graphviz, tkinter, subprocess, math
 ---
 ### Descripción del Proyecto
 El siguiente proyecto es un analizador lexico y sintactico, el cual tiene como objetivo reconocer las instrucciones ingresadas por el usuario y desplegarlas en la consola de la aplicación, asi mismo el usuario puede generar reportes de tokens, errores y datos en formato HTML.
+![gramatica](https://i.ibb.co/BG0bqSF/gramatica.jpg)
 ## Partes del Proyecto
 ### **Archivos y Carpetas**
 ### Carpeta Principal
