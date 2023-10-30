@@ -19,5 +19,6 @@ Este reporte consta de los tokens leidos correctamente durante el analisis, la i
 ![reporte_tokens](https://i.ibb.co/xDzHqQ0/analizar.png)
 ### **Reporte de Errores**
 Este reporte consta de los errores encontrados al momento de analizar las instrucciones, la información que se brinda en este reporte es: el tipo de error encontrado, el error, la fila y columna en la que se encuentra.
+![reporte_tokens](https://i.ibb.co/kydxrpV/html-errores.png)
 ### **Arbol de Derivación**
 Este reporte consta de las instrucciones leidas de manera grafica, y como las instrucciones se van derivando en más.

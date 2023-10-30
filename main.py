@@ -1,8 +1,6 @@
 import tkinter
 from tkinter import *
 from tkinter import filedialog
-import json
-import subprocess
 import reportes as R
 from analizadores import analizador_lexico as AL
 from analizadores import analizador_sintactico as AS

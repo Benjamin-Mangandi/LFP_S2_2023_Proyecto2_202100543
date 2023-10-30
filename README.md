@@ -80,6 +80,10 @@ Este se encarga de leer las instrucciones ingresadas por el usuario y si alguna 
 ## **Funciones**
 ### *Analizar*
 **Parametros**: texto mandado del analizador lexico
+Esta función recibe como parametro el texto resultante del analizador lexico, este lee las palabras reservadas ingresadas por el usuario y si las palabras coinciden realiza la accion correspondiente, esta acción se realiza por un *startswith* cada palabra reservada leida correctamente se ingresa al arreglo de los tokens leidos por medio de un objeto de tipo token y agregandolos a un diccionario.
+Al leer un comentario este se ignora en el analizador, por eso puede venir cualquier cosa en un comentario ingresado por el usuario ya sea normal o multilinea.
+Conforme se avanza en el texto, se aumenta ya sea la variable *fila* *columna*.
+Si la instruccion se desea imprimir en la consola, se agrega en el arreglo *resultados* el cual se retorna para que este se imprima en la consola del sistema al final del analisis
 Al final retorna los resultados para mostrarlos en la consola de la aplicación
 ![analizar3](https://i.ibb.co/Y7xVTTZ/analizar-sintactico.png)
 ![analizar4](https://i.ibb.co/p0gCVzn/analizar-sintactico2.png)
