@@ -2,6 +2,7 @@ import tkinter
 from tkinter import *
 from tkinter import filedialog
 from objetos import tokens
+import reportes as R
 tk_cometario_multilinea = ["'",'"']
 tk_comenario_normal = ["#"]
 tk_abecedario = ["a", "b", "c", "d"]
@@ -90,6 +91,15 @@ def analizar(datos):
         if linea.startswith("conteo"):
             resultados.append(str(len(registros)))
             continue
+        if linea.startswith('exportarReporte("'):
+                try:
+                    nombre = linea[17:-3]
+                    contenido_html = R.generar_tabla_datos_html(claves, registros)
+                    with open(nombre+".html", 'w') as Tabla:
+                        Tabla.write(contenido_html)
+                        continue
+                except Exception:
+                    return resultados
         for token in linea:
             if comentario_multilinea:
                 if token in tk_cometario_multilinea:

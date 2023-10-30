@@ -3,58 +3,10 @@ from tkinter import *
 from tkinter import filedialog
 import json
 import subprocess
+import reportes as R
 from analizadores import analizador_lexico as AL
 from analizadores import analizador_sintactico as AS
 
-def generar_tabla_html(data):
-    html_content = """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Tabla de datos</title>
-        <style>
-            table {
-                width: 80%;
-                margin: 0 auto; /* Centrar la tabla en la página */
-                border-collapse: collapse;
-            }
-            th, td {
-                border: 1px solid #000; /* Líneas de separación */
-                padding: 8px;
-                text-align: left;
-            }
-            th {
-                background-color: #f2f2f2;
-            }
-        </style>
-    </head>
-    <body>
-        <table>
-            <tr>
-                <th>Tipo</th>
-                <th>Lexema</th>
-                <th>Fila</th>
-                <th>Columna</th>
-            </tr>
-    """
-
-    for row in data:
-        html_content += f"""
-            <tr>
-                <td>{row['tipo']}</td>
-                <td>{row['lexema']}</td>
-                <td>{row['fila']}</td>
-                <td>{row['columna']}</td>
-            </tr>
-        """
-
-    html_content += """
-        </table>
-    </body>
-    </html>
-    """
-    
-    return html_content
 
 def abrir_archivo():
     try:
@@ -99,18 +51,24 @@ def salir():
     menu.destroy()
 
 def analizar_texto(texto):
-    cuadro_resultados.config(state="normal")
-    resultados = AL.analizar(texto)
-    cuadro_resultados.delete(1.0, END)
-    for resultado in reversed(resultados):
-        cuadro_resultados.insert(1.0, str("\n"+">>>> "+resultado))
-    cuadro_resultados.config(state="disabled")
+    try:
+        cuadro_resultados.config(state="normal")
+        resultados = AL.analizar(texto)
+        cuadro_resultados.delete(1.0, END)
+        for resultado in reversed(resultados):
+            cuadro_resultados.insert(1.0, str("\n"+">>>> "+resultado))
+        cuadro_resultados.config(state="disabled")
+    except Exception:
+        return
 
 
 def reporte_tokens(data):
-    contenido_html = generar_tabla_html(data)
-    with open('tokens.html', 'w') as resultados:
-        resultados.write(contenido_html)
+    try:
+        contenido_html = R.generar_tabla_tokens_html(data)
+        with open('tokens.html', 'w') as Tabla_tokens:
+            Tabla_tokens.write(contenido_html)
+    except Exception:
+        return
 
 
 def reporte_errores():
