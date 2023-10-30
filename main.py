@@ -71,8 +71,13 @@ def reporte_tokens(data):
         return
 
 
-def reporte_errores():
-    print("errores")
+def reporte_errores(data):
+    try:
+        contenido_html = R.generar_tabla_tokens_html(data)
+        with open('Reporte de Errores.html', 'w') as Tabla_errores:
+            Tabla_errores.write(contenido_html)
+    except Exception:
+        return
 
 
 def arbol():

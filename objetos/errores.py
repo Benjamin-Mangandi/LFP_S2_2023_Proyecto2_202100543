@@ -1,6 +1,6 @@
 class error:
-    def __init__(self,tipo, lexema, fila, columna):
+    def __init__(self,tipo, error, fila, columna):
         self.tipo = tipo
-        self.lexema = lexema
+        self.error = error
         self.fila = fila
         self.columna = columna

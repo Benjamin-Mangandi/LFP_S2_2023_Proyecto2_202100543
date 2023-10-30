@@ -30,13 +30,13 @@ def generar_tabla_tokens_html(data):
             </tr>
     """
 
-    for row in data:
+    for fila in data:
         html_content += f"""
             <tr>
-                <td>{row['tipo']}</td>
-                <td>{row['lexema']}</td>
-                <td>{row['fila']}</td>
-                <td>{row['columna']}</td>
+                <td>{fila['tipo']}</td>
+                <td>{fila['lexema']}</td>
+                <td>{fila['fila']}</td>
+                <td>{fila['columna']}</td>
             </tr>
         """
 
@@ -47,6 +47,58 @@ def generar_tabla_tokens_html(data):
     """
     
     return html_content
+
+def generar_tabla_errores_html(data):
+    html_content = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Tabla de Errores</title>
+        <style>
+            table {
+                width: 80%;
+                margin: 0 auto; /* Centrar la tabla en la página */
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid #000; /* Líneas de separación */
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Tipo</th>
+                <th>Error</th>
+                <th>Fila</th>
+                <th>Columna</th>
+            </tr>
+    """
+
+    for fila in data:
+        html_content += f"""
+            <tr>
+                <td>{fila['tipo']}</td>
+                <td>{fila['error']}</td>
+                <td>{fila['fila']}</td>
+                <td>{fila['columna']}</td>
+            </tr>
+        """
+
+    html_content += """
+        </table>
+    </body>
+    </html>
+    """
+    
+    return html_content
+
+
 
 def generar_tabla_datos_html(claves, registros):
     html_content = """
