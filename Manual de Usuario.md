@@ -16,6 +16,7 @@ Al analizar el texto el programa reconocerá las instrucciones permitidas ingres
 Al terminar de analizar tu archivo, puedes presionar el boton ***Reportes***, el cual desplegará una serie de 3 opciones.
 ### **Reporte de Tokens**
 Este reporte consta de los tokens leidos correctamente durante el analisis, la información que se brinda en este reporte es: el tipo de token leido, el token, la fila y columna en la que se encuentra.
+![reporte_tokens](https://i.ibb.co/xDzHqQ0/analizar.png)
 ### **Reporte de Errores**
 Este reporte consta de los errores encontrados al momento de analizar las instrucciones, la información que se brinda en este reporte es: el tipo de error encontrado, el error, la fila y columna en la que se encuentra.
 ### **Arbol de Derivación**

@@ -44,7 +44,7 @@ def analizar(datos):
                     continue
         if linea.startswith("claves ="):
             if linea.endswith("]"):
-                aux_tk = tokens.token("instrucción",linea[0:6],1,columna)
+                aux_tk = tokens.token("claves",linea[0:6],1,columna)
                 token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
@@ -55,7 +55,7 @@ def analizar(datos):
                     claves.append(dato.replace('"', ""))
             continue
         if linea.startswith("Registros ="):
-            aux_tk = tokens.token("instrucción",linea[0:9],1,columna)
+            aux_tk = tokens.token("registros",linea[0:9],1,columna)
             token_leido = {
                 "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
@@ -66,7 +66,7 @@ def analizar(datos):
             continue
         if linea.startswith('imprimir("'):
             if comentario_junto == False:
-                aux_tk = tokens.token("instrucción",linea[:8],1,columna)
+                aux_tk = tokens.token("imprimir",linea[:8],1,columna)
                 token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
@@ -82,7 +82,7 @@ def analizar(datos):
                 resultados.insert(indice,comentario_completo)
                 continue
         if linea.startswith('imprimirln("'):
-            aux_tk = tokens.token("instrucción",linea[0:10],1,columna)
+            aux_tk = tokens.token("imprimir_salto_linea",linea[0:10],1,columna)
             token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
@@ -91,7 +91,7 @@ def analizar(datos):
             resultados.append(linea[12:-3])
             continue
         if linea.startswith("datos"):
-            aux_tk = tokens.token("instrucción",linea[0:5],1,columna)
+            aux_tk = tokens.token("datos",linea[0:5],1,columna)
             token_leido = {
                 "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
@@ -107,7 +107,7 @@ def analizar(datos):
                 resultados.append(texto_registros)
             continue
         if linea.startswith("conteo"):
-            aux_tk = tokens.token("instrucción",linea[:6],1,columna)
+            aux_tk = tokens.token("numero",linea[:6],1,columna)
             token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
@@ -129,35 +129,35 @@ def analizar(datos):
             except Exception:
                 return resultados
         if linea.startswith('promedio("'):
-            aux_tk = tokens.token("instrucción",linea[:8],1,columna)
+            aux_tk = tokens.token("numero",linea[:8],1,columna)
             token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
             tokens_leidos.append(token_leido)
             continue
         if linea.startswith('contarsi("'):
-            aux_tk = tokens.token("instrucción",linea[:8],1,columna)
+            aux_tk = tokens.token("numero",linea[:8],1,columna)
             token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
             tokens_leidos.append(token_leido)
             continue
         if linea.startswith('sumar("'):
-            aux_tk = tokens.token("instrucción",linea[:5],1,columna)
+            aux_tk = tokens.token("numero",linea[:5],1,columna)
             token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
             tokens_leidos.append(token_leido)
             continue
         if linea.startswith('max("'):
-            aux_tk = tokens.token("instrucción",linea[:3],1,columna)
+            aux_tk = tokens.token("numero",linea[:3],1,columna)
             token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
             tokens_leidos.append(token_leido)
             continue
         if linea.startswith('min("'):
-            aux_tk = tokens.token("instrucción",linea[:3],1,columna)
+            aux_tk = tokens.token("numero",linea[:3],1,columna)
             token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
@@ -174,14 +174,14 @@ def analizar(datos):
                         continue
                 continue
             if token in tk_comentario_normal:
-                aux_tk = tokens.token("instrucción", token,fila,columna)
+                aux_tk = tokens.token("comentario", token,fila,columna)
                 token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
                 tokens_leidos.append(token_leido)
                 break
             if token in tk_cometario_multilinea:
-                aux_tk = tokens.token("instrucción",token,fila,columna)
+                aux_tk = tokens.token("comentario_multilinea",token,fila,columna)
                 token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
                     }
