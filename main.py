@@ -65,7 +65,7 @@ def analizar_texto(texto):
 def reporte_tokens(data):
     try:
         contenido_html = R.generar_tabla_tokens_html(data)
-        with open('tokens.html', 'w') as Tabla_tokens:
+        with open('Reporte de Tokens.html', 'w') as Tabla_tokens:
             Tabla_tokens.write(contenido_html)
     except Exception:
         return
