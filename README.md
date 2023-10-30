@@ -16,8 +16,9 @@ El siguiente proyecto es un analizador lexico y sintactico, el cual tiene como o
 ### **Archivos y Carpetas**
 ### Carpeta Principal
 # main.py
-**Importa**: *analizador_lexico, analizador_sintactico*
+**Importa**: *analizador_lexico, analizador_sintactico, reportes, filedialog, tkinter*
 ![menu](https://i.ibb.co/ZSbvR50/menu.png)
+![menu2](https://i.ibb.co/71YMHrT/menu2.png)
 ## **Funciones**
 ### *abrir_archivo*
 Esta función permite abrir un archivo de texto al usuario por medio de la función de tkinter 
@@ -44,25 +45,49 @@ Esta Función recibe como parametro un arreglo en donde estén los tokens leidos
 ### *reporte_errores*
 **Parametros**: arreglo de errores
 Esta Función recibe como parametro un arreglo en donde estén los errores encontrados, se le pasa como arreglo a la función *generar_tabla_errores_html* del **archivo reportes.py** para obtener el contenido html y realizar el archivo correspondiente.
-![reporte](https://i.ibb.co/1r4B68t/reporte-errores.png)
+![reporte_errores](https://i.ibb.co/1r4B68t/reporte-errores.png)
 # reportes.py
-### analizadores
 ## **Funciones**
-### *analizar*
+### *generar_tabla_tokens_html*
+**Parametros**: arreglo con los tokens leidos
+Esta función realiza en formato HTML la tabla de tokens generada por el usuario y utiliza el arreglo de tokens leidos para las filas y retorna el contenido html para realizar el archivo
+![tabla_tokens](https://i.ibb.co/0Vdm65B/tabla-tokens1.png)
+![tabla_token2](https://i.ibb.co/wSVYwwc/tabla-tokens2.png)
+### *generar_tabla_errores_html*
+**Parametros**: arreglo con los errores encontrados
+Esta función realiza en formato HTML la tabla de errores generada por el usuario y utiliza el arreglo de errores para las filas y retorna el contenido html para realizar el archivo
+![tabla_errores](https://i.ibb.co/GHpkbKp/tabla-errores1.png)
+![tabla_errore2](https://i.ibb.co/BNZSmsP/tabla-errores2.png)
+### *generar_tabla_datos_html*
+**Parametros**: arreglo de claves y arreglo de registros
+Esta función realiza en formato HTML la tabla con los registros y las claves ingresadas por el usuario el arreglo de claves para las columnas y el arreglo de registros para las filas y retorna el contenido html para realizar el archivo
+![tabla_datos](https://i.ibb.co/HzLs4md/tabla-datos.png)
+![tabla_datos2](https://i.ibb.co/xL3Qk2M/tabla-datos2.png)
+
+### analizadores
 # analizador_lexico.py
+**Importa**: *analizador_sintactico, errores*
 Este archivo contiene todos los abecedarios que usa el analizador para validar caracteres y palabras.
 ## **Funciones**
 ### *analizar*
 **Parametros**: texto del cuadro de texto
 Esta función analiza el texto del cuadro de texto en busca de errores caracter a caracter; si encuentra un caracter que no esté en abecedario lo incluye como un error, y se suma al contador de errores, la fila y la columna.
 Al terminar el analisis, le pasa el texto al analizador sintactico.
-![analizar2](https://i.ibb.co/k3MwPbV/analizar2.png)
+![analizar2](https://i.ibb.co/xLSgyCm/analizador-lexico.png)
 # analizador_sintactico.py
+**Importa**: *tokens, reportes*
+Este se encarga de leer las instrucciones ingresadas por el usuario y si alguna de ellas coincide realiza la instruccion deseada.
 ## **Funciones**
 ### *Analizar*
 **Parametros**: texto mandado del analizador lexico
-Esta funcion grafica los nodos creados por medio de la funcion *render()* y le da nombre al documento por medio del parametro ingresado que es en donde se guardan los datos del estilo en la posicion 0 y lo abre en un archivo pdf
-![analizar3](https://i.ibb.co/fFzns3y/reinicar-graficar.png)
+Al final retorna los resultados para mostrarlos en la consola de la aplicación
+![analizar3](https://i.ibb.co/Y7xVTTZ/analizar-sintactico.png)
+![analizar4](https://i.ibb.co/p0gCVzn/analizar-sintactico2.png)
+![analizar5](https://i.ibb.co/CKtJrX5/analizar-sintactico3.png)
+![analizar6](https://i.ibb.co/rFMRxN5/analizar-sintactico4.png)
+![analizar7](https://i.ibb.co/p2yJhXV/analizar-sintactico5.png)
+![analizar8](https://i.ibb.co/HhhKPK0/analizar-sintactico6.png)
+![analizar9](https://i.ibb.co/syMCX3T/analizar-sintactico7.png)
 ### objetos
 # errores.py
 # **Clase**: Error

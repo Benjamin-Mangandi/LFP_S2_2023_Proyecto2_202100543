@@ -7,11 +7,11 @@ def generar_tabla_tokens_html(data):
         <style>
             table {
                 width: 80%;
-                margin: 0 auto; /* Centrar la tabla en la página */
+                margin: 0 auto;
                 border-collapse: collapse;
             }
             th, td {
-                border: 1px solid #000; /* Líneas de separación */
+                border: 1px solid #000;
                 padding: 8px;
                 text-align: left;
             }
@@ -57,11 +57,11 @@ def generar_tabla_errores_html(data):
         <style>
             table {
                 width: 80%;
-                margin: 0 auto; /* Centrar la tabla en la página */
+                margin: 0 auto;
                 border-collapse: collapse;
             }
             th, td {
-                border: 1px solid #000; /* Líneas de separación */
+                border: 1px solid #000;
                 padding: 8px;
                 text-align: left;
             }
@@ -109,11 +109,11 @@ def generar_tabla_datos_html(claves, registros):
         <style>
             table {
                 width: 80%;
-                margin: 0 auto; /* Centrar la tabla en la página */
+                margin: 0 auto;
                 border-collapse: collapse;
             }
             th, td {
-                border: 1px solid #000; /* Líneas de separación */
+                border: 1px solid #000;
                 padding: 8px;
                 text-align: left;
             }

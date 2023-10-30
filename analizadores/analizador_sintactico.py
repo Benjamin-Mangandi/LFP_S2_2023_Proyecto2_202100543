@@ -1,6 +1,4 @@
-import tkinter
 from tkinter import *
-from tkinter import filedialog
 from objetos import tokens
 import reportes as R
 tk_cometario_multilinea = ["'",'"']
@@ -90,7 +88,7 @@ def analizar(datos):
             comentario_junto=False
             resultados.append(linea[12:-3])
             continue
-        if linea.startswith("datos"):
+        if linea.startswith("datos("):
             aux_tk = tokens.token("datos",linea[0:5],1,columna)
             token_leido = {
                 "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
@@ -106,7 +104,7 @@ def analizar(datos):
                     texto_registros=registro+texto_registros
                 resultados.append(texto_registros)
             continue
-        if linea.startswith("conteo"):
+        if linea.startswith("conteo("):
             aux_tk = tokens.token("numero",linea[:6],1,columna)
             token_leido = {
                     "tipo": aux_tk.tipo, "lexema": aux_tk.lexema, "fila": aux_tk.fila, "columna": aux_tk.columna
